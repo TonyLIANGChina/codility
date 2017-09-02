@@ -12,7 +12,4 @@ struct Results solution(int A[], int N, int K)
 	result.A = temp;
 	result.N = N;
 	return result;
-	free(temp);
-	temp = NULL;
-
 }
