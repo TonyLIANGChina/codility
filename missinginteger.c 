@@ -1,0 +1,53 @@
+  #include "malloc.h"
+  #include "memory.h"
+  
+  int solution(int A[], int N) {
+  int *bitmapArray;
+	int i;
+	int result;
+	int flag = 0;
+	int flag2 = 0;
+
+	bitmapArray = (int*)malloc(1000001 * sizeof(int));
+	memset(bitmapArray, 0, 1000001 * sizeof(int));
+
+	for (i = 0; i <= N - 1; i++)
+	{
+		if (A[i] >= 0)
+		{
+			if (bitmapArray[A[i]] == 0)
+			{
+				bitmapArray[A[i]] = 1;
+			}
+		}
+		else
+		{
+			flag++;
+			continue;
+		}
+	}
+	if (flag == N)
+	{
+		result = 1;
+	}
+		
+
+	for (i = 1; i <= N; i++)
+	{
+		if (bitmapArray[i] == 0)
+		{
+			result = i;
+			break;
+		}
+		else
+		{
+			flag2++;
+			continue;
+		}		
+	}
+	if (flag2 == N)
+		result = N+1;
+	free(bitmapArray);
+	bitmapArray = NULL;
+	return result;
+  }
